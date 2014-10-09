@@ -28,6 +28,21 @@ void DoodleArea::setToolOval(){
     this->currentTool = DOODLETOOL_OVAL;
 }
 
+void DoodleArea::clear(){
+    this->image->fill(Qt::white);
+    this->modified = true;
+    this->update();
+}
+
+void DoodleArea::drawLineTo(const QPoint &endPoint){
+    QPainter painter(this->image);
+    painter.setPen(QPen(this->currentColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter.drawLine(this->lastPoint, endPoint);
+    this->lastPoint = endPoint;
+    this->modified = true;
+    this->update();
+}
+
 void DoodleArea::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton){
         this->lastPoint = event->pos();
@@ -46,4 +61,10 @@ void DoodleArea::mouseReleaseEvent(QMouseEvent *event){
         this->drawLineTo(event->pos());
         this->doodling = false;
     }
+}
+
+void DoodleArea::paintEvent(QPaintEvent *event){
+    QPainter painter(this);
+    QRect dirtyRect = event->rect();
+    painter.drawImage(dirtyRect, *this->image);
 }

@@ -7,6 +7,8 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QPen>
 
 class DoodleArea : public QWidget
 {
@@ -31,6 +33,7 @@ public slots:
 private:
     void drawLineTo(const QPoint &endPoint);
     void resizeImage(const QSize &newSize);
+    void clear();
 
     int currentTool;
     bool modified;
