@@ -32,7 +32,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -65,27 +65,45 @@
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
   </action>
   <action name="actionPen">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
+   </property>
    <property name="text">
     <string>Pen</string>
    </property>
   </action>
   <action name="actionRect">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/draw-rectangle.png</normaloff>:/icons/draw-rectangle.png</iconset>
+   </property>
    <property name="text">
     <string>Rect</string>
    </property>
   </action>
   <action name="actionOval">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/draw-ellipse.png</normaloff>:/icons/draw-ellipse.png</iconset>
+   </property>
    <property name="text">
     <string>Oval</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

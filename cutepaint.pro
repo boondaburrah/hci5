@@ -20,3 +20,12 @@ HEADERS  += mainwindow.h \
     doodlearea.h
 
 FORMS    += mainwindow.ui
+
+OTHER_FILES += \
+    draw-ellipse.png \
+    draw-freehand.png \
+    draw-rectangle.png \
+    document-save.png
+
+RESOURCES += \
+    resources.qrc

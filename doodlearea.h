@@ -1,8 +1,12 @@
 #ifndef DOODLEAREA_H
 #define DOODLEAREA_H
 
-#include <QWidget>
+#define DOODLETOOL_PEN 0
+#define DOODLETOOL_RECT 1
+#define DOODLETOOL_OVAL 2
 
+#include <QWidget>
+#include <QMouseEvent>
 
 class DoodleArea : public QWidget
 {
@@ -28,6 +32,7 @@ private:
     void drawLineTo(const QPoint &endPoint);
     void resizeImage(const QSize &newSize);
 
+    int currentTool;
     bool modified;
     bool doodling;
     QColor currentColor;
