@@ -25,7 +25,8 @@ OTHER_FILES += \
     draw-ellipse.png \
     draw-freehand.png \
     draw-rectangle.png \
-    document-save.png
+    document-save.png \
+    .gitignore
 
 RESOURCES += \
     resources.qrc

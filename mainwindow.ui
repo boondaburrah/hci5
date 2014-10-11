@@ -22,7 +22,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QWidget" name="canvasWidget" native="true"/>
+     <widget class="DoodleArea" name="canvasWidget" native="true"/>
     </item>
    </layout>
   </widget>
@@ -74,6 +74,9 @@
    </property>
   </action>
   <action name="actionPen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
@@ -83,6 +86,9 @@
    </property>
   </action>
   <action name="actionRect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/icons/draw-rectangle.png</normaloff>:/icons/draw-rectangle.png</iconset>
@@ -92,6 +98,9 @@
    </property>
   </action>
   <action name="actionOval">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/icons/draw-ellipse.png</normaloff>:/icons/draw-ellipse.png</iconset>
@@ -102,8 +111,33 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>DoodleArea</class>
+   <extends>QWidget</extends>
+   <header>doodlearea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -9,7 +9,11 @@ DoodleArea::DoodleArea(QWidget *parent) :
     this->currentColor = Qt::blue;
     this->currentTool = DOODLETOOL_PEN;
 
+    int width = this->size().width();
+    int height = this->size().height();
+
     this->resizeImage(this->size());
+//    this->clear();
 }
 
 void DoodleArea::resizeImage(const QSize &newSize){
@@ -36,7 +40,7 @@ void DoodleArea::clear(){
 
 void DoodleArea::drawLineTo(const QPoint &endPoint){
     QPainter painter(this->image);
-    painter.setPen(QPen(this->currentColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter.setPen(QPen(this->currentColor, 5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     painter.drawLine(this->lastPoint, endPoint);
     this->lastPoint = endPoint;
     this->modified = true;
