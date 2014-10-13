@@ -21,14 +21,17 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void paintEvent(QPaintEvent* event);
-    //void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event);
 
 signals:
+    void disableNonPen(bool disable);
+    void disableNonRect(bool disable);
+    void disableNonOval(bool disable);
 
 public slots:
-    void setToolPen();
-    void setToolRect();
-    void setToolOval();
+    void setToolPen(bool enabled);
+    void setToolRect(bool enabled);
+    void setToolOval(bool enabled);
 
 private:
     void drawLineTo(const QPoint &endPoint);

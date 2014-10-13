@@ -32,7 +32,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -58,7 +58,6 @@
    <addaction name="actionRect"/>
    <addaction name="actionOval"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
@@ -75,6 +74,9 @@
   </action>
   <action name="actionPen">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="icon">
@@ -117,6 +119,14 @@
    <extends>QWidget</extends>
    <header>doodlearea.h</header>
    <container>1</container>
+   <slots>
+    <signal>disableNonPen(bool)</signal>
+    <signal>disableNonRect(bool)</signal>
+    <signal>disableNonOval(bool)</signal>
+    <slot>setToolPen(bool)</slot>
+    <slot>setToolRect(bool)</slot>
+    <slot>setToolOval(bool)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>
@@ -136,6 +146,150 @@
     <hint type="destinationlabel">
      <x>399</x>
      <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPen</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>canvasWidget</receiver>
+   <slot>setToolPen(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRect</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>canvasWidget</receiver>
+   <slot>setToolRect(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOval</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>canvasWidget</receiver>
+   <slot>setToolOval(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvasWidget</sender>
+   <signal>disableNonOval(bool)</signal>
+   <receiver>actionPen</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvasWidget</sender>
+   <signal>disableNonOval(bool)</signal>
+   <receiver>actionRect</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvasWidget</sender>
+   <signal>disableNonPen(bool)</signal>
+   <receiver>actionOval</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvasWidget</sender>
+   <signal>disableNonPen(bool)</signal>
+   <receiver>actionRect</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvasWidget</sender>
+   <signal>disableNonRect(bool)</signal>
+   <receiver>actionOval</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>canvasWidget</sender>
+   <signal>disableNonRect(bool)</signal>
+   <receiver>actionPen</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>

@@ -20,16 +20,25 @@ void DoodleArea::resizeImage(const QSize &newSize){
     this->image = new QImage(newSize, QImage::Format_RGB32);
 }
 
-void DoodleArea::setToolPen(){
-    this->currentTool = DOODLETOOL_PEN;
+void DoodleArea::setToolPen(bool enabled){
+    if(enabled){
+        this->currentTool = DOODLETOOL_PEN;
+        emit disableNonPen(false);
+    }
 }
 
-void DoodleArea::setToolRect(){
-    this->currentTool = DOODLETOOL_RECT;
+void DoodleArea::setToolRect(bool enabled){
+    if(enabled){
+        this->currentTool = DOODLETOOL_RECT;
+        emit disableNonRect(false);
+    }
 }
 
-void DoodleArea::setToolOval(){
-    this->currentTool = DOODLETOOL_OVAL;
+void DoodleArea::setToolOval(bool enabled){
+    if(enabled){
+        this->currentTool = DOODLETOOL_OVAL;
+        emit disableNonOval(false);
+    }
 }
 
 void DoodleArea::clear(){
@@ -47,6 +56,10 @@ void DoodleArea::drawLineTo(const QPoint &endPoint){
     this->update();
 }
 
+void DoodleArea::resizeEvent(QResizeEvent *event){
+    this->resizeImage(event->size());
+}
+
 void DoodleArea::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton){
         this->lastPoint = event->pos();
@@ -55,14 +68,26 @@ void DoodleArea::mousePressEvent(QMouseEvent *event){
 }
 
 void DoodleArea::mouseMoveEvent(QMouseEvent *event){
-    if ((event->button() & Qt::LeftButton) && this->doodling && (this->currentTool == DOODLETOOL_PEN)){
+    if (/*(event->button() & Qt::LeftButton) && */this->doodling && (this->currentTool == DOODLETOOL_PEN)){
         this->drawLineTo(event->pos());
     }
 }
 
 void DoodleArea::mouseReleaseEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton && this->doodling){
-        this->drawLineTo(event->pos());
+        if(this->currentTool == DOODLETOOL_PEN){
+            this->drawLineTo(event->pos());
+        } else if(this->currentTool == DOODLETOOL_RECT){
+            QPainter painter(this->image);
+            painter.fillRect(QRect(this->lastPoint, event->pos()), this->currentColor);
+            this->update();
+        } else if(this->currentTool == DOODLETOOL_OVAL){
+            QPainter painter(this->image);
+            painter.setBrush(QBrush(this->currentColor));
+            painter.setPen(Qt::NoPen);
+            painter.drawEllipse(QRect(this->lastPoint, event->pos()));
+            this->update();
+        }
         this->doodling = false;
     }
 }
