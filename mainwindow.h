@@ -19,6 +19,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QComboBox* colors;
+    QComboBox* penWidth;
 };
 
 #endif // MAINWINDOW_H

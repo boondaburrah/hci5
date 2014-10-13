@@ -35,7 +35,7 @@ public slots:
     void setToolRect(bool enabled);
     void setToolOval(bool enabled);
     void setColor(int colorIndex);
-    void setPenWidth(const int size);
+    void setPenWidth(int size);
     void save();
     void clear();
 

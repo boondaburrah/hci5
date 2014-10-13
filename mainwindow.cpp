@@ -16,6 +16,18 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(this->colors, SIGNAL(currentIndexChanged(int)), this->ui->canvasWidget, SLOT(setColor(int)));
 
     this->ui->mainToolBar->addWidget(this->colors);
+
+    this->penWidth = new QComboBox;
+
+    this->penWidth->insertItem(2, "Light");
+    this->penWidth->insertItem(5, "Medium");
+    this->penWidth->insertItem(8, "Heavy");
+
+    this->penWidth->setCurrentIndex(1);
+
+    QObject::connect(this->penWidth, SIGNAL(currentIndexChanged(int)), this->ui->canvasWidget, SLOT(setPenWidth(int)));
+
+    this->ui->mainToolBar->addWidget(this->penWidth);
 }
 
 MainWindow::~MainWindow()
