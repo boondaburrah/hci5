@@ -9,15 +9,34 @@ DoodleArea::DoodleArea(QWidget *parent) :
     this->currentColor = Qt::blue;
     this->currentTool = DOODLETOOL_PEN;
 
-    int width = this->size().width();
-    int height = this->size().height();
+    //int width = this->size().width();
+    //int height = this->size().height();
 
     this->resizeImage(this->size());
-//    this->clear();
+    this->clear();
 }
 
 void DoodleArea::resizeImage(const QSize &newSize){
     this->image = new QImage(newSize, QImage::Format_RGB32);
+}
+
+void DoodleArea::setColor(int colorIndex){
+    switch(colorIndex){
+    case 0:
+        this->currentColor = Qt::blue;
+        break;
+    case 1:
+        this->currentColor = Qt::red;
+        break;
+    case 2:
+        this->currentColor = Qt::yellow;
+        break;
+    }
+}
+
+void DoodleArea::save(){
+    QString fileName = QFileDialog::getSaveFileName(this, "Save doodle as?", "", "Image (*.png)");
+    this->image->save(fileName, "png");
 }
 
 void DoodleArea::setToolPen(bool enabled){

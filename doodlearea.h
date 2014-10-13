@@ -9,6 +9,8 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPen>
+#include <QColor>
+#include <QFileDialog>
 
 class DoodleArea : public QWidget
 {
@@ -32,6 +34,8 @@ public slots:
     void setToolPen(bool enabled);
     void setToolRect(bool enabled);
     void setToolOval(bool enabled);
+    void setColor(int colorIndex);
+    void save();
 
 private:
     void drawLineTo(const QPoint &endPoint);

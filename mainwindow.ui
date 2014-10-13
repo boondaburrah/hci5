@@ -57,6 +57,7 @@
    <addaction name="actionPen"/>
    <addaction name="actionRect"/>
    <addaction name="actionOval"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionQuit">
    <property name="text">
@@ -126,6 +127,7 @@
     <slot>setToolPen(bool)</slot>
     <slot>setToolRect(bool)</slot>
     <slot>setToolOval(bool)</slot>
+    <slot>save()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -290,6 +292,22 @@
     <hint type="destinationlabel">
      <x>-1</x>
      <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave</sender>
+   <signal>triggered()</signal>
+   <receiver>canvasWidget</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>327</y>
     </hint>
    </hints>
   </connection>
