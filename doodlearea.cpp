@@ -9,15 +9,16 @@ DoodleArea::DoodleArea(QWidget *parent) :
     this->currentColor = Qt::blue;
     this->currentTool = DOODLETOOL_PEN;
 
-    //int width = this->size().width();
-    //int height = this->size().height();
-
+    this->image = new QImage(this->size(), QImage::Format_ARGB32);
     this->resizeImage(this->size());
-    this->clear();
+    //this->clear();
 }
 
 void DoodleArea::resizeImage(const QSize &newSize){
-    this->image = new QImage(newSize, QImage::Format_RGB32);
+    if(newSize.isEmpty()){
+        return;
+    }
+    this->image = new QImage(this->image->copy(QRect(QPoint(0, 0), newSize)));
 }
 
 void DoodleArea::setColor(int colorIndex){
@@ -87,7 +88,7 @@ void DoodleArea::mousePressEvent(QMouseEvent *event){
 }
 
 void DoodleArea::mouseMoveEvent(QMouseEvent *event){
-    if (/*(event->button() & Qt::LeftButton) && */this->doodling && (this->currentTool == DOODLETOOL_PEN)){
+    if (this->doodling && (this->currentTool == DOODLETOOL_PEN)){
         this->drawLineTo(event->pos());
     }
 }
