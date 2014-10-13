@@ -8,6 +8,7 @@ DoodleArea::DoodleArea(QWidget *parent) :
     this->doodling = false;
     this->currentColor = Qt::blue;
     this->currentTool = DOODLETOOL_PEN;
+    this->currentPenSize = 5;
 
     this->image = new QImage(this->size(), QImage::Format_ARGB32);
     this->resizeImage(this->size());
@@ -19,6 +20,10 @@ void DoodleArea::resizeImage(const QSize &newSize){
         return;
     }
     this->image = new QImage(this->image->copy(QRect(QPoint(0, 0), newSize)));
+}
+
+void DoodleArea::setPenWidth(const int size){
+    this->currentPenSize = size;
 }
 
 void DoodleArea::setColor(int colorIndex){

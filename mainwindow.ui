@@ -53,6 +53,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionSave"/>
+   <addaction name="actionClear"/>
    <addaction name="separator"/>
    <addaction name="actionPen"/>
    <addaction name="actionRect"/>
@@ -112,6 +113,15 @@
     <string>Oval</string>
    </property>
   </action>
+  <action name="actionClear">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/draw-eraser.png</normaloff>:/icons/draw-eraser.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -128,6 +138,8 @@
     <slot>setToolRect(bool)</slot>
     <slot>setToolOval(bool)</slot>
     <slot>save()</slot>
+    <slot>clear()</slot>
+    <slot>setPenWidth(int)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -300,6 +312,22 @@
    <signal>triggered()</signal>
    <receiver>canvasWidget</receiver>
    <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClear</sender>
+   <signal>triggered()</signal>
+   <receiver>canvasWidget</receiver>
+   <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>

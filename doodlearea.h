@@ -35,14 +35,16 @@ public slots:
     void setToolRect(bool enabled);
     void setToolOval(bool enabled);
     void setColor(int colorIndex);
+    void setPenWidth(const int size);
     void save();
+    void clear();
 
 private:
     void drawLineTo(const QPoint &endPoint);
     void resizeImage(const QSize &newSize);
-    void clear();
 
     int currentTool;
+    int currentPenSize;
     bool modified;
     bool doodling;
     QColor currentColor;

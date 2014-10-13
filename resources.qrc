@@ -4,5 +4,6 @@
         <file>draw-freehand.png</file>
         <file>draw-rectangle.png</file>
         <file>document-save.png</file>
+        <file>draw-eraser.png</file>
     </qresource>
 </RCC>
